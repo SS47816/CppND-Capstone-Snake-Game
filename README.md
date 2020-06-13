@@ -52,7 +52,7 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ### Increased Difficulties
 1. The snake will die if he hits the wall.
-2. Randomly generated rocks at the game start.
+2. Rocks will be randomly generated at the game start. If the snake hits the rock, it will die as well.
 
 ### More Fun
 1. Magic Fruits
@@ -73,8 +73,6 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ### Original Game Bugs Fixed
 1. Fix: The food might be generated outside the game window.
-
-
 
 
 

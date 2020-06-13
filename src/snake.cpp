@@ -93,5 +93,5 @@ bool Snake::SnakeCell(int x, int y) {
 
 void Snake::ChangeSpeedBy(const float percentage) {
   speed *= (1.0f + percentage/100.0f);
-  if (speed < 0.1f) { speed = 0.1f; };
+  if (speed < init_speed) { speed = 0.1f; };
 }
