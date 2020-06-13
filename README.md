@@ -44,3 +44,7 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 
 ## Rubric Points Addressed
+
+1. I/O
+2. OOP
+3. Memory Management
