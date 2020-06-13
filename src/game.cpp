@@ -63,6 +63,7 @@ void Game::PlaceFood() {
     if (!snake.SnakeCell(food.position.x, food.position.y)) {
       // food.x = x;
       // food.y = y;
+      food.specialEffects();
       return;
     }
   }
