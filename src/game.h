@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <random>
+#include <memory>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
@@ -20,7 +21,7 @@ class Game {
  private:
   Snake snake;
   Food food;
-  Obstacle obstacles;
+  std::shared_ptr<Obstacle> obstacles;
 
   int grid_width;
   int grid_height;

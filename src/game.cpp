@@ -4,7 +4,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
-      obstacles(grid_width, grid_height),
+      obstacles(std::make_shared<Obstacle>(grid_width, grid_height)),
       grid_width(grid_width),
       grid_height(grid_height) {
   PlaceFood();
@@ -56,8 +56,10 @@ void Game::PlaceFood() {
     // Check that the location is not occupied by a snake item before placing
     // food.
     if (!snake.SnakeCell(food.position.x, food.position.y)) {
-      food.specialEffects();
-      return;
+      if (!obstacles->RockCell(food.position.x, food.position.y)) {
+        food.specialEffects();
+        return;
+      }
     }
   }
 }
@@ -65,7 +67,7 @@ void Game::PlaceFood() {
 void Game::Update() {
   if (!snake.alive) return;
 
-  snake.Update();
+  snake.Update(obstacles);
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);

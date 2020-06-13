@@ -2,7 +2,8 @@
 #include <cmath>
 #include <iostream>
 
-void Snake::Update() {
+void Snake::Update(std::shared_ptr<Obstacle> obs) {
+  obstacles = obs;
   SDL_Point prev_cell{ static_cast<int>(head_x), static_cast<int>(head_y) };  // We first capture the head's cell before updating.
   UpdateHead();
   SDL_Point current_cell{ static_cast<int>(head_x), static_cast<int>(head_y) };  // Capture the head's cell after updating.
@@ -22,8 +23,14 @@ bool Snake::CheckIfAlive(SDL_Point &current_head_cell) {
       alive = false;
       break;
     }
+    // check if hit the walls
     else if (current_head_cell.x < 0 || current_head_cell.x >= grid_width ||
              current_head_cell.y < 0 || current_head_cell.y >= grid_height) {
+      alive = false;
+      break;
+    }
+    // check if hit the rocks
+    else if (obstacles->RockCell(current_head_cell.x, current_head_cell.y)) {
       alive = false;
       break;
     }

@@ -2,7 +2,9 @@
 #define SNAKE_H
 
 #include <vector>
+#include <memory>
 #include "SDL.h"
+#include "obstacle.h"
 
 class Snake {
  public:
@@ -12,9 +14,9 @@ class Snake {
       : grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
-        head_y(grid_height / 2) {}
+        head_y(grid_height / 2) {};
 
-  void Update();
+  void Update(std::shared_ptr<Obstacle> obs);
 
   void GrowBody();
   bool SnakeCell(int x, int y);
@@ -33,6 +35,7 @@ class Snake {
   bool CheckIfAlive(SDL_Point &current_head_cell);
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
+  std::shared_ptr<Obstacle> obstacles;
 
   bool growing{false};
   int grid_width;

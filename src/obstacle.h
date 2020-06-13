@@ -10,6 +10,8 @@ class Obstacle {
     Obstacle();
     Obstacle(std::size_t grid_width, std::size_t grid_height);
 
+    bool RockCell(int x, int y);
+
     std::vector<SDL_Point> rocks;
     // paint grey
     const int r = 0x7D;
