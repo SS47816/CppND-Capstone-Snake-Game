@@ -42,9 +42,22 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 #### 4. `renderer.h` and `renderer.cpp`
 
+## New Game Features
+
+### Increased Difficulties
+1. The snake will die if he hits the wall
+2. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food)
+3. Randomly generated rocks at the game start
+
+### More Fun
+1. Magic Fruits
+2. Wormholes
+
 
 ## Rubric Points Addressed
 
-1. I/O
-2. OOP
-3. Memory Management
+#### Loops, Functions, I/O
+1. 
+
+#### Object Oriented Programming
+1. 
