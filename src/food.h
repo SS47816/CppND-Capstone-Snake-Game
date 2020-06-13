@@ -4,7 +4,7 @@
 #include <random>
 #include "SDL.h"
 
-enum FoodType {poisoned_mushroom = 0, worm, blue_berry};
+enum FoodType {worm = 0, poisoned_mushroom, blue_berry};
 
 class Food {
   public:
@@ -15,15 +15,23 @@ class Food {
     void specialEffects();
     
     int food_type;
+    int score_buff;
+    float speed_buff;
     SDL_Point position;
 
   private:
     std::random_device dev;
     std::mt19937 engine;
 
-    const int k_worm_prob = 100;
-    const int k_poisoned_mushroom_prob = 0;
-    const int k_berry_prob = 0;
+    const int k_worm_prob = 80;                        // percentage
+    const int k_poisoned_mushroom_prob = 10;           // percentage
+    const int k_berry_prob = 10;                       // percentage
+    const int k_worm_score = 1;
+    const int k_poisoned_mushroom_score = 0;
+    const int k_blue_berry_max_score = 10;
+    const float k_worm_speed = 10.0f;                  // percentage
+    const float k_poisoned_mushroom_speed = -50.0f;    // percentage
+    const float k_blue_berry_max_speed = 50.0f;        // percentage
 };
 
 #endif // FOOD_H

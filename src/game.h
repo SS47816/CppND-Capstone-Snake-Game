@@ -21,10 +21,10 @@ class Game {
   // SDL_Point food;
   Food food;
 
-  std::random_device dev;
-  std::mt19937 engine;
-  std::uniform_int_distribution<int> random_w;
-  std::uniform_int_distribution<int> random_h;
+  // std::random_device dev;
+  // std::mt19937 engine;
+  // std::uniform_int_distribution<int> random_w;
+  // std::uniform_int_distribution<int> random_h;
 
   int grid_width;
   int grid_height;
