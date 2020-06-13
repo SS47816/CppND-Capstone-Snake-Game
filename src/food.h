@@ -32,7 +32,7 @@ class Food {
     const int k_berry_max_score = 10;
     const float k_worm_speed = 10.0f;                  // percentage
     const float k_poisoned_mushroom_speed = -50.0f;    // percentage
-    const float k_berry_max_speed = 50.0f;        // percentage
+    const float k_berry_max_speed = 50.0f;             // percentage
 };
 
 #endif // FOOD_H

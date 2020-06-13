@@ -48,7 +48,6 @@ void Renderer::Render(Snake const snake, Food const &food) {
   SDL_RenderClear(sdl_renderer);
 
   // Render food
-  // SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   SDL_SetRenderDrawColor(sdl_renderer, food.r, food.g, food.b, food.a);
   block.x = food.position.x * block.w;
   block.y = food.position.y * block.h;

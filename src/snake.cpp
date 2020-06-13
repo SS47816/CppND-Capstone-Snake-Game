@@ -7,8 +7,7 @@ void Snake::Update() {
   UpdateHead();
   SDL_Point current_cell{ static_cast<int>(head_x), static_cast<int>(head_y) };  // Capture the head's cell after updating.
 
-  // Update all of the body vector items if the snake head has moved to a new
-  // cell.
+  // Update all of the body vector items if the snake head has moved to a new cell.
   if (current_cell.x != prev_cell.x || current_cell.y != prev_cell.y) {
     // std::cout << "x: " << current_cell.x << " y: " << current_cell.y << std::endl;
     UpdateBody(current_cell, prev_cell);
