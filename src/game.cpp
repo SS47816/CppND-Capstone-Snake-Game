@@ -71,11 +71,12 @@ void Game::Update() {
 
   // Check if there's food over here
   if (food.position.x == new_x && food.position.y == new_y) {
-    score++;
-    PlaceFood();
+    score += food.score_buff;
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.ChangeSpeedBy(10.0f);
+    snake.ChangeSpeedBy(food.speed_buff);
+    // place next food
+    PlaceFood();
   }
 }
 
