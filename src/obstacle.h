@@ -8,12 +8,17 @@
 class Obstacle {
   public:
     Obstacle();
-    ~Obstacle();
+    Obstacle(std::size_t grid_width, std::size_t grid_height);
 
     std::vector<SDL_Point> rocks;
-    int r, g, b, a;
+    // paint grey
+    const int r = 0x7D;
+    const int g = 0x7D;
+    const int b = 0x7D;
+    const int a = 0xFF;
 
   private:
+    const int num_rocks = 10;
     std::random_device dev;
     std::mt19937 engine;
 };

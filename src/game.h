@@ -7,6 +7,7 @@
 #include "renderer.h"
 #include "snake.h"
 #include "food.h"
+#include "obstacle.h"
 
 class Game {
  public:
@@ -18,8 +19,8 @@ class Game {
 
  private:
   Snake snake;
-  // SDL_Point food;
   Food food;
+  Obstacle obstacles;
 
   int grid_width;
   int grid_height;

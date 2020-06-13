@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, Food const &food) {
+void Renderer::Render(Snake const &snake, Food const &food, Obstacle const &obstacles) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -46,6 +46,14 @@ void Renderer::Render(Snake const snake, Food const &food) {
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
+
+  // Render Obstacles
+  SDL_SetRenderDrawColor(sdl_renderer, obstacles.r, obstacles.g, obstacles.b, obstacles.a);
+  for (SDL_Point const &rock : obstacles.rocks) {
+    block.x = rock.x * block.w;
+    block.y = rock.y * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
 
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, food.r, food.g, food.b, food.a);

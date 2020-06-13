@@ -4,6 +4,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
+      obstacles(grid_width, grid_height),
       grid_width(grid_width),
       grid_height(grid_height) {
   PlaceFood();
@@ -24,7 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, food, obstacles);
 
     frame_end = SDL_GetTicks();
 
