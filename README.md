@@ -29,3 +29,18 @@ In this project, you can build your own C++ application or extend this Snake gam
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## File and Class Structure
+
+<img src="file_structure.png"/>
+
+#### 1. `controller.h` and `controller.cpp`
+
+#### 2. `game.h` and `game.cpp`
+
+#### 3. `snake.h` and `snake.cpp`
+
+#### 4. `renderer.h` and `renderer.cpp`
+
+
+## Rubric Points Addressed
