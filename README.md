@@ -42,6 +42,12 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 #### 4. `renderer.h` and `renderer.cpp`
 
+#### 5. `Food.h` and `Food.cpp` 
+
+#### 6. `Rock.h` and `Rock.cpp`
+
+
+
 ## New Game Features
 
 ### Increased Difficulties
@@ -50,7 +56,16 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ### More Fun
 1. Magic Fruits
-2. Wormholes
+
+| Food Type           | Color  | Score | Special Effect  |
+| ------------------- | :----- | :---- | --------------- |
+| Worm                | Yellow | 1     | Speed +10%      |
+| Poisoned Mushroom   | Green  | 0     | Speed -50%      |
+| Berry (lucky fruit) | Pink   | 1~10  | Speed -50%~+50% |
+
+2. Wormholes 
+
+   Takes you to the next level of the game. In the next level, where the rewards will be **2x** the amount of the previous level.
 
 ### Additional Features
 1. The window title will now display the current speed, level.
@@ -58,6 +73,10 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ### Original Game Bugs Fixed
 1. Fix: The food might be generated outside the game window.
+
+
+
+
 
 ## Rubric Points Addressed
 
