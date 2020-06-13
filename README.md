@@ -30,56 +30,101 @@ In this project, you can build your own C++ application or extend this Snake gam
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
-## File and Class Structure
+
+
+## Code Structure
 
 <img src="file_structure.png"/>
 
-#### 1. `controller.h` and `controller.cpp`
+#### 1. `main.cpp`
 
-#### 2. `game.h` and `game.cpp`
+This file remains unchanged, still contains some constant variables related to the window settings and creates instances of `Game`, `Renderer`, `Controller` and calls function `Game::Run()` to start up the game.
 
-#### 3. `snake.h` and `snake.cpp`
+#### 2. `snake.h` and `snake.cpp`
+
+Implements class `Snake`, including the important attributes of the snake `head` and snake `body`. It is in charge of controlling the behaviors of the snake such as `GrowBody()`, `UpdateHead()`, `UpdateBody()`, etc. 
+
+The modifications made was that the random number generator was moved to new classes `Food` and `Obstacle` and let them deal with that themselves. New function `CheckIfAlive()` was added to check if the snake is still alive based on the position of the head and the walls and obstacles. The speed control of the snake was modified slightly into increase by percentage.
+
+#### 3. `game.h` and `game.cpp`
+
+These two files manages the main logics of the game, which at its core is the Input-Update-Render loop. The modifications made to this file was mainly to accommodate the introduced new features of the game.
 
 #### 4. `renderer.h` and `renderer.cpp`
 
-#### 5. `Food.h` and `Food.cpp` 
+These two files contains the `rederer` object which is in charge of rendering the visuals to the screen. These files were slightly modified to include `obstacles` object for rendering as well and changed the colors of each types of object.
 
-#### 6. `Rock.h` and `Rock.cpp`
+#### 5. `controller.h` and `controller.cpp`
+
+These two files implemented the `Controller` class which deals with user inputs from the keyboard to control the motion of the snake. 
+
+### Newly Added Files
+
+#### 6. `Food.h` and `Food.cpp` 
+
+Implements class `Food` which represents three different types of foods the snake likes (with different colors of course). The class `Food` is in charge of generating a food on the map randomly of a certain type, as well as store the unique effects of each type of food. The probabilities, scores, colors, and special effects of each type of food are also stored in this class as private members. 
+
+#### 7. `Obstacle.h` and `Obstacle.cpp`
+
+Implements class `Obstacle` which mainly consists of a `vector` of `rocks`, with each rock being a `SDL+Point` , a grid on the map represented by Grey color. The class also provides function `RockCell()` to check if the snake head hits any of the rocks. 
 
 
 
 ## New Game Features
 
 ### Increased Difficulties
-1. The snake will die if he hits the wall.
-2. Rocks will be randomly generated at the game start. If the snake hits the rock, it will die as well.
+Besides biting himself, two more ways of dying are introduced to the game to increase the difficulty in control and timing: 
+
+* The snake will die if he hits the wall. 
+
+* Rocks will be randomly generated at the game start. If the snake hits the rock, it will die as well.
 
 ### More Fun
-1. Magic Fruits
+* Magic Fruits: 
 
-| Food Type           | Color  | Score | Special Effect  |
-| ------------------- | :----- | :---- | --------------- |
-| Worm                | Yellow | 1     | Speed +10%      |
-| Poisoned Mushroom   | Green  | 0     | Speed -50%      |
-| Berry (lucky fruit) | Pink   | 1~10  | Speed -50%~+50% |
+  Now we have more types of foods and each of them provides unique effects on the snake. The foods will still appear one at a time however the type as well as its effect will be totally unpredictable! 
+
+  Hope by introducing this slight amount of randomness will be more fun! Also the mechanism of rewarding the player by reducing the snake's speed could reduced the difficulty and increase the game length and final score.
+
+| Food Type         | Color  | Score | Speed           | Effect                               |
+| ----------------- | :----- | :---- | --------------- | ------------------------------------ |
+| Worm              | Yellow | 1     | Speed +10%      | Snake's normal daily food            |
+| Poisoned Mushroom | Green  | 0     | Speed -50%      | "I feel dizzy~"                      |
+| Berry             | Pink   | 1~10  | Speed -50%~+50% | "You won't know until you tasted it" |
 
 ### Additional Features
-1. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food).
-2. The window title will now display the current speed of the snake.
+* The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food). This aims to lower down the difficulty slightly and hope that together with the other new game mechanisms,  this can prolong the length of one game.
+
+* The window title will now display the current speed of the snake (with 1.0x as the initial speed). The player now could better visualize the effect of different foods.
 
 ### Original Game Bugs Fixed
-1. Fix: The food might be generated outside the game window.
+* Fix: The food might be generated outside the game window.
+
+
 
 
 ## Rubric Points Addressed
 
 #### Loops, Functions, I/O
-1. 
+
+| Criteria                                                     | Applied to       |
+| ------------------------------------------------------------ | ---------------- |
+| The project demonstrates an understanding of C++ functions and control structures. | Everywhere       |
+| The project accepts user input and processes the input.      | `controller.cpp` |
 
 #### Object Oriented Programming
-1. 
+| Criteria                                                     | Applied to                  |
+| ------------------------------------------------------------ | --------------------------- |
+| The project uses Object Oriented Programming techniques.     | Everywhere                  |
+| Classes use appropriate access specifiers for class members. | Class  `Food`, `Obstacles`, |
+| Class constructors utilize member initialization lists.      | Class  `Food`, `Obstacles`, |
+| Classes encapsulate behavior.                                | Class  `Food`, `Obstacles`, |
 
 #### Memory Management
-1. The project makes use of references in function declarations. (everywhere)
-2. The project uses move semantics to move data, instead of copying it, where possible.
-3. The project uses smart pointers instead of raw pointers. 
+
+| Criteria                                                     | Applied to                                        |
+| ------------------------------------------------------------ | ------------------------------------------------- |
+| The project makes use of references in function declarations. | Everywhere                                        |
+| The project uses move semantics to move data, instead of copying it, where possible. | `obstacle.cpp`                                    |
+| The project uses smart pointers instead of raw pointers.     | `snake`, `food`, `obstacles` instances everywhere |
+
