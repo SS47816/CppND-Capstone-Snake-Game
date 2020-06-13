@@ -30,6 +30,7 @@ class Snake {
   std::vector<SDL_Point> body;
 
  private:
+  bool CheckIfAlive(SDL_Point &current_head_cell, SDL_Point &prev_head_cell);
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 
