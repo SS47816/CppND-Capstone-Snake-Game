@@ -20,7 +20,7 @@ class Game {
 
  private:
   Snake snake;
-  Food food;
+  std::shared_ptr<Food> food;
   std::shared_ptr<Obstacle> obstacles;
 
   int grid_width;

@@ -63,17 +63,12 @@ In this project, you can build your own C++ application or extend this Snake gam
 | Poisoned Mushroom   | Green  | 0     | Speed -50%      |
 | Berry (lucky fruit) | Pink   | 1~10  | Speed -50%~+50% |
 
-2. Wormholes 
-
-   Takes you to the next level of the game. In the next level, where the rewards will be **2x** the amount of the previous level.
-
 ### Additional Features
-1. The window title will now display the current speed, level.
-2. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food).
+1. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food).
+2. The window title will now display the current speed of the snake.
 
 ### Original Game Bugs Fixed
 1. Fix: The food might be generated outside the game window.
-
 
 
 ## Rubric Points Addressed
@@ -83,3 +78,8 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 #### Object Oriented Programming
 1. 
+
+#### Memory Management
+1. The project makes use of references in function declarations. (everywhere)
+2. The project uses move semantics to move data, instead of copying it, where possible.
+3. The project uses smart pointers instead of raw pointers. 

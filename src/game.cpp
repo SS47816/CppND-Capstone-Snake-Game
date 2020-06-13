@@ -5,6 +5,7 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       obstacles(std::make_shared<Obstacle>(grid_width, grid_height)),
+      food(std::make_shared<Food>()),
       grid_width(grid_width),
       grid_height(grid_height) {
   PlaceFood();
@@ -52,12 +53,12 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::PlaceFood() {
   while (true) {
-    food.setPosition(grid_width, grid_height);
+    food->setPosition(grid_width, grid_height);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(food.position.x, food.position.y)) {
-      if (!obstacles->RockCell(food.position.x, food.position.y)) {
-        food.specialEffects();
+    if (!snake.SnakeCell(food->position.x, food->position.y)) {
+      if (!obstacles->RockCell(food->position.x, food->position.y)) {
+        food->specialEffects();
         return;
       }
     }
@@ -73,11 +74,11 @@ void Game::Update() {
   int new_y = static_cast<int>(snake.head_y);
 
   // Check if there's food over here
-  if (food.position.x == new_x && food.position.y == new_y) {
-    score += food.score_buff;
+  if (food->position.x == new_x && food->position.y == new_y) {
+    score += food->score_buff;
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.ChangeSpeedBy(food.speed_buff);
+    snake.ChangeSpeedBy(food->speed_buff);
     // place next food
     PlaceFood();
   }
