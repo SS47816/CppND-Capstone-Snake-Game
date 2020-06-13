@@ -5,8 +5,8 @@ Food::Food() : engine(dev()) {}
 Food::~Food() {};
 
 void Food::setPosition(int grid_width, int grid_height) {
-    auto random_w = std::uniform_int_distribution<int>(0, static_cast<int>(grid_width));
-    auto random_h = std::uniform_int_distribution<int>(0, static_cast<int>(grid_height));
+    auto random_w = std::uniform_int_distribution<int>(0, static_cast<int>(grid_width - 1));
+    auto random_h = std::uniform_int_distribution<int>(0, static_cast<int>(grid_height - 1));
     position.x = random_w(engine);
     position.y = random_h(engine);
 }
