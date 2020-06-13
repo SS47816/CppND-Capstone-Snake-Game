@@ -45,14 +45,19 @@ In this project, you can build your own C++ application or extend this Snake gam
 ## New Game Features
 
 ### Increased Difficulties
-1. The snake will die if he hits the wall
-2. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food)
-3. Randomly generated rocks at the game start
+1. The snake will die if he hits the wall.
+2. Randomly generated rocks at the game start.
 
 ### More Fun
 1. Magic Fruits
 2. Wormholes
 
+### Additional Features
+1. The window title will now display the current speed, level.
+2. The snake's speed will increase in a proportional manner (ie. speed +10% after eating a normal food).
+
+### Original Game Bugs Fixed
+1. Fix: The food might be generated outside the game window.
 
 ## Rubric Points Addressed
 
