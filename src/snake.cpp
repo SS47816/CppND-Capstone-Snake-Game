@@ -77,3 +77,7 @@ bool Snake::SnakeCell(int x, int y) {
   }
   return false;
 }
+
+void Snake::ChangeSpeedBy(const float percentage) {
+  speed *= (1.0f + percentage/100.0f);
+}
